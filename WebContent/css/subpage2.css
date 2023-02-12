@@ -1,0 +1,197 @@
+@charset "UTF-8";
+.li_1{
+/*     width: 1439px; */
+/*     height: 546px;  */
+    text-align: center;
+    margin: 0 auto;   
+
+}
+.box-wrap{
+
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+
+
+}
+
+.box{
+    width:345px;
+    height: 495px;
+    margin:0px;
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+#btnSubmit{
+    width:100px;
+    margin:auto;
+    display:block;
+    margin-top: 28px;
+}
+button{
+    width: 345px;
+    height: 50px;
+
+}
+button:hover{
+    background-color: black;
+    color: #ffffff;
+}
+
+h1{
+    padding-top: 22px;
+    padding-bottom: 0;
+
+     font-weight: 900;
+     margin: 0;
+     text-align: left;
+
+ }
+ 
+h2{
+
+     padding-top: 4px;
+     padding-bottom: 28px;
+     font-weight: 400;
+     margin: 0;
+     text-align: left;
+
+ }
+ 
+h3{
+     font-weight: 900;
+
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: left;
+
+ }
+
+ main{
+    /* width: 1441px; height: 2394px;
+    border: 1px solid lightblue; */
+   
+    
+}  
+
+.group{
+    /* padding-top: 100px; */
+    padding-bottom: 200px;
+   
+}
+
+img{
+	width: 100%;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+
+}
+
+.wapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.new>img{
+    height: 588px;
+    width: 588px;
+    position: relative;
+    /* left: 240px; */
+}
+
+.exp{
+    height: 588px;
+    width: 588px;
+    background-color: antiquewhite;
+    position: relative;
+    /* left: 970px; */
+    float: left;
+}
+.new{
+    float: left;
+    margin-right: 142px;
+}
+
+/* exp 글 수평 맞춤 */
+.sell{
+    display: flex;
+  }
+  .sell>h6{
+      justify-content: flex-start;
+      margin-left: 76px;
+  }
+  
+  .made{
+    display: flex;
+  }
+  .made>h6{
+      justify-content: flex-start;
+      margin-left: 76px;
+  }
+  .brand{
+    display: flex;
+  }
+  .brand>h6{
+      justify-content: flex-start;
+      margin-left: 76px;
+  }
+  .point{
+    display: flex;
+  }
+  .point>h6{
+      justify-content: flex-start;
+      margin-left: 76px;
+  }
+  
+
+/* exp 버튼 수평 맞춤 */
+.ring1{
+    display: flex;
+  }
+  .ring1>button{
+      justify-content: flex-start;
+      margin-left: 76px;
+      margin-top: 3.5%;
+
+
+  }
+  
+  .ring2{
+    display: flex;
+    
+
+  }
+  .ring2>button{
+      justify-content: flex-start;
+      margin-left: 52px;
+      margin-top: 3.5%;
+
+
+  }
+.btn1{
+    margin-right: 20px;
+}
+
+.btn1:hover{
+
+    background-color: black;
+    color: white;
+    
+}
+
+.btn2:hover{
+
+    background-color: black;
+    color: white;
+    
+}
+
+
+

@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+/* 초기화 */
+* {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   text-decoration: none;
+   word-break: keep-all;
+   font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 페이지 헤더 */
+.page_header{
+	width: 100%
+}
+
+.location_header{
+   max-width: 100%;
+   height: 300px;
+   background-size: cover;
+   background-position: 0%;
+   margin-bottom: 100px;
+   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url('/css/images/location_header.jpg');
+}
+
+
+/* 콘텐츠 상단-네이밍 */
+.comeText {
+   font-size: 30px;
+   color: #fff;
+   font-weight: 900;
+   line-height: 300px;
+   text-align: center;
+}
+
+/* 미디어퀴리 */
+@media (max-width: 1000px) {
+  .col-md-6{
+    text-align: center !important;
+  }
+}
+h3{text-align: center; margin-bottom: 40px !important;}
+#bus{text-align: center;}
+#locationimg{width: 100px; height: 100px}
+.mg-t100{margin-top: 100px}
+.mg-b100{margin-bottom: 100px}
+.fs-15px{font-size: 15px}
+.col-md-6>strong{font-size: 25px}

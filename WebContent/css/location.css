@@ -1,0 +1,165 @@
+@charset "utf-8";
+
+/* 초기화 */
+* {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   text-decoration: none;
+   word-break: keep-all;
+   font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 페이지 헤더 */
+.page_header{
+	width: 100%
+}
+
+.location_header{
+   max-width: 100%;
+   height: 300px;
+   background-size: cover;
+   background-position: 0%;
+   margin-bottom: 100px;
+   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url('/css/images/location_header.jpg');
+}
+
+/* 텍스트 */
+.text1 {
+   max-width: 1000px;
+   height: 100%;
+   margin: 0 auto;
+   margin-bottom: 30px;
+   margin-left: 16px;
+   margin-right: 16px;
+}
+
+.text2 {
+   max-width: 1000px;
+   margin: 0 auto;
+   margin-bottom: 140px;
+   margin-top: 60px;
+   margin-left: 16px;
+   margin-right: 16px;
+}
+
+
+.name {
+   display: block;
+   font-size: 1.17em;
+   margin-block-start: 1em;
+   margin-block-end: 1em;
+   margin-inline-start: 0px;
+   margin-inline-end: 0px;
+   font-weight: bold;
+   color: #a60000;
+}
+
+.name2 {
+
+   font-size: 1.17em;
+   margin-block-start: 1em;
+   margin-block-end: 1em;
+   margin-inline-start: 0px;
+   margin-inline-end: 0px;
+   font-weight: bold;
+   color: #fff;
+   background-color: black;
+}
+
+.announce2 {
+   font-size: 11pt;
+   font-weight: 400;
+   line-height: 1.7;
+   color: #333333;
+   padding-left: 30px;
+   margin: 10px 0px 30px 0px;
+}
+
+.announce2 > thin {
+   font-size: 10pt;
+   color: #7c7c7c;
+   line-height: 1;
+}
+
+.announce2 > a {
+   color: #333333;
+}
+
+.announce {
+   font-size: 11pt;
+   font-weight: 300;
+   line-height: 1.7;
+   color: #7c7c7c;
+   padding-left: 30px;
+   	margin-top: 5px;
+}
+
+.announce>strong{
+	font-weight: 500; 
+	color: black !important;
+}
+
+/* 콘텐츠 하단 */
+.map_box {
+   max-width: 1440px;
+   margin: 0 auto;
+   height: 100%;
+}
+
+#map {
+   min-width: 240px;
+   max-width: 1000px;
+   height: 600px;
+   margin: 0 auto;
+   margin-top: 50px;
+   margin-bottom: 50px;
+}
+
+
+/* 콘텐츠 상단-네이밍 */
+.comeText {
+   font-size: 30px;
+   color: #fff;
+   font-weight: 900;
+   line-height: 300px;
+   text-align: center;
+}
+
+/* 미디어퀴리 */
+@media (max-width: 1000px){
+	#map {
+   min-width: 240px;
+   max-width: 1000px;
+   height: 400px;
+   margin: 0 auto;
+   margin-top: 50px;
+   margin-bottom: 50px;
+}
+}
+
+@media (max-width: 400px){
+	#map {
+   min-width: 240px;
+   max-width: 1000px;
+   height: 300px;
+   margin: 0 auto;
+   margin-top: 50px;
+   margin-bottom: 50px;
+}
+}
+
+
+/* @media (max-width: 1000px) {
+  .col-md-6{
+    text-align: center !important;
+  }
+}
+h3{text-align: center; margin-bottom: 40px !important;}
+#bus{text-align: center;}
+#locationimg{width: 100px; height: 100px}
+.mg-t100{margin-top: 100px}
+.mg-b100{margin-bottom: 100px}
+.fs-15px{font-size: 15px}
+.col-md-6>strong{font-size: 25px} */

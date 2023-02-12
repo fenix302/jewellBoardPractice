@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				  "dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+	<resultMap id="noticeResult" type="notice">
+		<result property="bno" column="BNO" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="writer" column="WRITER" />
+		<result property="regdate" column="REGDATE" />
+	</resultMap>
+
+	<sql id="criteria">  <!-- MyBatis는 sql태그를 이용해서 SQL의 일부를 별도로 보관하고, 필요한 경우에 include 시키는 형식으로 사용할 수 있다.-->	
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+<!-- 				String[] getTypeArr 에서 나온 typeArr 쓰는것임 -->
+			<foreach item="type" collection="typeArr">
+<!-- trim 태그 안에서 먼저 prefix 속성이 'OR' 텍스트를 추가해 줍니다 -->
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>		    
+	</sql>
+
+	<select id="retrieveBoardList" parameterType="map" resultType="map">
+		<![CDATA[
+			SELECT BOARD.BNO
+				, BOARD.TITLE
+				, BOARD.CONTENT
+				, BOARD.WRITER
+				, BOARD.REGDATE 
+			FROM tb_jw_notice BOARD 
+			WHERE  1=1
+			ORDER BY BOARD.BNO DESC
+		]]>
+	</select>
+
+	<select id="retrieveBoard" parameterType="map" resultType="map">
+		<![CDATA[
+		/*	retrieveBoard	*/
+			SELECT BOARD.BNO
+				 , BOARD.TITLE
+				 , BOARD.CONTENT
+				 , BOARD.WRITER
+				 , BOARD.REGDATE
+			FROM   TB_JW_NOTICE BOARD
+			WHERE  1=1
+			AND    BNO = #{BNO}
+		]]>
+	</select>
+	<select id="retrieveMaxBoardNo" resultType="string">
+		<![CDATA[
+		/*	retrieveMaxBoardNo	*/
+			SELECT MAX(BOARD.BNO)
+			FROM   tb_jw_notice BOARD
+		]]>
+	</select>
+	<insert id="createBoard" parameterType="notice">
+		<![CDATA[
+			INSERT INTO TB_JW_NOTICE(
+				BNO
+				, TITLE
+				, CONTENT
+				, WRITER
+			) VALUES (
+				SEQ_NOTICE.NEXTVAL
+				, #{title}
+				, #{content}
+				, #{writer}
+			)
+		]]>
+<!-- 		insert into tb_jw_notice (bno, title, content, writer) -->
+<!-- 		values (seq_board.nextval, #{title}, #{content}, #{writer}) -->
+	</insert>
+
+	<update id="updateBoard" parameterType="notice">
+		<![CDATA[
+		/*	updateBoard	*/
+			UPDATE tb_jw_notice
+			SET TITLE = #{title}
+			, CONTENT = #{content}
+			WHERE BNO = #{bno}
+		]]>
+	</update>
+	<update id="updateBoardHits" parameterType="notice">
+		<![CDATA[
+		/*	updateBoardHits	*/
+			UPDATE tb_jw_notice
+			SET BOARD_HITS          =  BOARD_HITS + 1
+			WHERE BNO = #{BNO}
+		]]>
+	</update>
+
+
+	<delete id="deleteBoard" parameterType="map">
+		<![CDATA[
+		/*	deleteBoard	*/
+			DELETE
+			FROM  tb_jw_notice
+			WHERE 1=1
+			AND BNO = #{BNO}
+		]]>
+	</delete>
+
+	<delete id="deleteBoard2" parameterType="map">
+		<![CDATA[
+		/*	deleteBoard2	*/
+			DELETE
+			FROM  tb_jw_notice
+			WHERE 1=1
+			AND USER_CODE = (SELECT USER_CODE FROM TB_COM_USER WHERE ID = #{ID})
+		]]>
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	<select id="getListWithPaging" parameterType="map" resultType="map">
+		<![CDATA[
+		
+		SELECT
+		    bno, title, content, writer, regdate
+	    from(
+		    SELECT /*+INDEX_DESC(tb_jw_notice pk_notice) */
+		        ROWNUM rn, bno, title, content, writer, regdate
+		    FROM tb_jw_notice
+		    WHERE 
+		]]>	
+<!-- 		스프링노트 MyBatis 동적쿼리 문법 보기 	
+			1. trim 태그 안에서 prefix 속성 : "(" 추가
+			2. prefixOverrides 속성이 'OR' 텍스트 찾고 삭제
+			3. suffix 속성 : 맨뒤에 ") AND" 추가 -->
+<!-- 여기서는 foreach 태그 안쪽 trim 태그에서 먼저 prefix 속성이 'OR' 텍스트를 추가하여
+     'OR' 연산으로 쿼리문을 처리하다가, 두가지의 텍스트 조합 검색 조건이 나타나면,
+     'AND' 연산을 수행하여 두가지의 텍스트 조합 조건을 검색 처리 합니다.-->
+			<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+<!-- 					String[] getTypeArr 에서 나온 typeArr 쓰는것임 -->
+				<foreach item="type" collection="typeArr">
+<!-- trim 태그 안에서 먼저 prefix 속성이 'OR' 텍스트를 추가해 줍니다 -->
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 'T'.toString()">
+								title like '%'||#{keyword}||'%'
+							</when>
+							<when test="type == 'C'.toString()">
+								content like '%'||#{keyword}||'%'
+							</when>
+							<when test="type == 'W'.toString()">
+								writer like '%'||#{keyword}||'%'
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>		    
+		<![CDATA[
+			ROWNUM <= #{pageNum} * #{amount}
+			)
+		where rn > (#{pageNum} -1) * #{amount}
+		]]>	
+		    
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tb_jw_notice where 
+		
+		<include refid="criteria"></include>
+		
+		bno > 0
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
