@@ -13,11 +13,11 @@ public class NoticeDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<Map<String, String>> retrieveBoardList(Criteria cri){
+	public List<NoticeBean> retrieveBoardList(Criteria cri){
 		return sqlSession.selectList("notice.retrieveBoardList", cri);
 	}
 
-	public List<Map<String, String>> getListWithPaging(Criteria cri){
+	public List<NoticeBean> getListWithPaging(Criteria cri){
 		return sqlSession.selectList("notice.getListWithPaging", cri);
 	}
 	

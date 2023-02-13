@@ -5,9 +5,9 @@ import java.util.Map;
 
 
 public interface NoticeService {
-	public List<Map<String, String>> retrieveBoardList(Criteria cri);
+	public List<NoticeBean> retrieveBoardList(Criteria cri);
 
-	public List<Map<String, String>> getListWithPaging(Criteria cri);
+	public List<NoticeBean> getListWithPaging(Criteria cri);
 	
 	public Map<String, String> retrieveBoard(Map<String, String> boardParam);
 

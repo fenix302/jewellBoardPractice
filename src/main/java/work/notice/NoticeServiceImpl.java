@@ -12,11 +12,11 @@ public class NoticeServiceImpl implements NoticeService{
 	@Resource(name = "noticeDAO")
 	private NoticeDAO noticeDAO;
 
-	public List<Map<String, String>> retrieveBoardList(Criteria cri){
+	public List<NoticeBean> retrieveBoardList(Criteria cri){
 		return noticeDAO.retrieveBoardList(cri);
 	}
 	
-	public List<Map<String, String>> getListWithPaging(Criteria cri) {
+	public List<NoticeBean> getListWithPaging(Criteria cri) {
 		return noticeDAO.getListWithPaging(cri);
 	}
 

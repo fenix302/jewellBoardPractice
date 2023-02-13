@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import work.user.UserService;
 
@@ -104,9 +105,9 @@ public class NoticeController {
 		
 //		Map<String, String> boardParam = new HashMap<String, String>();
 
-		List<Map<String, String>> dsBoardList = noticeService.retrieveBoardList(cri);
+//		List<NoticeBean> dsBoardList = noticeService.retrieveBoardList(cri);
 
-		mv.addObject("dsBoardList", dsBoardList);
+//		mv.addObject("dsBoardList", dsBoardList);
 		mv.setViewName("/notice/boardListR");
 
 		return mv;
@@ -140,30 +141,8 @@ public class NoticeController {
 		return mv;
 	}
 
-	@RequestMapping(value="/work/notice/updateBoardRating.do", method=RequestMethod.GET)
-	public ModelAndView updateBoardRating(HttpServletRequest request){
-		ModelAndView mv = new ModelAndView();
-
-		HttpSession session = request.getSession();
-
-		Map<String, String> boardParam = new HashMap<String, String>();
-		Map<String, String> markParam = new HashMap<String, String>();
-
-		String userCode = (String)session.getAttribute("userCode");
-		String boardNo = request.getParameter("boardNo");
-
-		boardParam.put("boardNo", boardNo);
-
-		markParam.put("userCode", userCode);
-		markParam.put("boardNo", boardNo);
-
-		mv.setViewName("redirect:/work/notice/retrieveBoard.do?boardNo=" + boardNo + "&fromRating=true");
-
-		return mv;
-	}
-
 	@RequestMapping(value="/work/notice/updateBoard.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView updateBoard1(HttpServletRequest request, @ModelAttribute NoticeBean board){
+	public ModelAndView updateBoard1(HttpServletRequest request, @ModelAttribute NoticeBean board, Criteria cri, Model model){
 		Map<String, String> boardParam = new HashMap<String, String>();
 		ModelAndView mv = new ModelAndView();
         String boardNo = request.getParameter("bno"); //없으면 GET(create안함), 있으면 POST(create)
@@ -175,10 +154,18 @@ public class NoticeController {
 
 		if(flag == null){
 			mv.addObject("dsBoard", dsBoard);
+//			model.addAttribute("pageNum", cri.getPageNum());
+//			model.addAttribute("amount", cri.getAmount());
+//			model.addAttribute("type", cri.getType());
+//			model.addAttribute("keyword", cri.getKeyword());
 			mv.setViewName("/notice/boardRegisterU");
 		}else{
 			noticeService.updateBoard(board);
-			mv.setViewName("/work/notice/retrieveBoard.do?boardNo=" + boardNo);
+//			model.addAttribute("pageNum", cri.getPageNum());
+//			model.addAttribute("amount", cri.getAmount());
+//			model.addAttribute("type", cri.getType());
+//			model.addAttribute("keyword", cri.getKeyword());
+			mv.setViewName("redirect:/work/notice/retrieveBoard.do");
 		}
 		return mv;
 	}

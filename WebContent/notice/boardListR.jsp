@@ -68,10 +68,10 @@
 								<tbody>
 			                    	<c:forEach items="${dsBoardList}" var="dsBoardList" varStatus="courseIdx">
 			                         <tr>
-			  							<td><a href ="${context}/work/notice/retrieveBoard.do?bno=${dsBoardList.BNO}">${dsBoardList.BNO}</a></td>
-										<td><a href="${context}/work/notice/retrieveBoard.do?bno=${dsBoardList.BNO}">${dsBoardList.TITLE}</a></td>
-										<td><c:out value="${dsBoardList.WRITER}" /></td>
-										<td><fmt:formatDate pattern="yyyy-MM-dd" value="${dsBoardList.REGDATE}" /></td>
+			  							<td><a class="move" href="${dsBoardList.bno}">${dsBoardList.bno}</a></td>
+										<td><a class="move" href="${dsBoardList.bno}">${dsBoardList.title}</a></td>
+										<td><c:out value="${dsBoardList.writer}" /></td>
+										<td><fmt:formatDate pattern="yyyy-MM-dd" value="${dsBoardList.regdate}" /></td>
 
 			                         </tr>
 				                    </c:forEach>
@@ -152,6 +152,7 @@
 		<!-- /.row -->
 </div>
 		<form id="actionForm" action="/work/notice/retrieveBoardList.do" method="get">
+<%-- 			<input type="hidden" name="bno" value='<c:out value="${dsBoardList.BNO}"/>'> --%>
 			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 			<input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>
@@ -197,7 +198,7 @@
 						$(".move").on("click", function (e) {
 							e.preventDefault();
 							actionForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+"'>");
-							actionForm.attr("action","/board/get");
+							actionForm.attr("action","/work/notice/retrieveBoard.do");
 							actionForm.submit();
 						});
 						
