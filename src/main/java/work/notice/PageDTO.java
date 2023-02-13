@@ -1,9 +1,10 @@
 package work.notice;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
-@Getter @ToString
+@Getter @Setter @ToString
 public class PageDTO {
 
 	private int startPage;  // 시작 페이지 필드 정의

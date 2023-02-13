@@ -92,7 +92,8 @@ public class NoticeController {
 	@RequestMapping(value="/work/notice/retrieveBoardList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView retrieveBoardList(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
-
+		
+		
 		Map<String, String> boardParam = new HashMap<String, String>();
 
 		List<Map<String, String>> dsBoardList = noticeService.retrieveBoardList(boardParam);

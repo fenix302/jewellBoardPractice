@@ -7,7 +7,7 @@ import java.util.Map;
 public interface NoticeService {
 	public List<Map<String, String>> retrieveBoardList(Map<String, String> boardParam);
 
-	public List<Map<String, String>> getListWithPaging(Map<String, String> boardParam);
+//	public List<Map<String, String>> getListWithPaging(Map<String, String> boardParam);
 	
 	public Map<String, String> retrieveBoard(Map<String, String> boardParam);
 

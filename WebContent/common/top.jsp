@@ -48,7 +48,7 @@ a{
             <nav class="navbar navbar-expand-lg navbar-light container justify-content-between" id="navbar-example2">
         <!-- 로고 -->
 	        	<ul class="navbar-brand">
-					<li><a href="${homeUrl}"><img src="${context}/css/images/logo.png" alt="JEWELL"></a></li>
+					<li><a href="${homeUrl}"><img src="#" alt="JEWELL"></a></li>
 				</ul>
         <!-- 네비게이션 바 -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@ a{
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">연습용</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="${context}/company/introduce.jsp">회사소개</a></li>
                                 <li><a class="dropdown-item" href="${context}/company/location.jsp">오시는 길</a></li>

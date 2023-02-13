@@ -113,7 +113,7 @@
 							<label>RegDate</label> <input class="form-control" name="regdate" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${dsBoard.REGDATE}" />' readonly="readonly">
 						</div>
 
-						<button type="submit" data-oper='modify' class="btn btn-default" onclick="location.href=${context}/work/notice/updateBoard.do?bno=${dsBoard.BNO}">Modify</button>	
+						<button type="submit" data-oper='modify' class="btn btn-success" onclick="location.href=${context}/work/notice/updateBoard.do?bno=${dsBoard.BNO}">Modify</button>	
 						<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
 						<button type="submit" data-oper='list' class="btn btn-info" onclick="location.href='/notice/boardListR.jsp'">List</button>
 						

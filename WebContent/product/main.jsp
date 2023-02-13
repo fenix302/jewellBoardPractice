@@ -246,17 +246,22 @@
   <c:if test="${sessionScope.grade == 'A'}">
          <div class="container" style="margin-top: 10%; margin-bottom: 10%">
             <div class="row">
-               <div class="col-md-4">
+               <div class="col-md-3">
+                   <a href="${context}/work/notice/retrieveBoardList.do" class="btn btn-success" style="width: 100%; height: 250px;" role="button">
+                     <h1><span class="glyphicon glyphicon-list-alt" style="font-size: 80px; margin-top: 5%;"></span> <br/>공지사항</h1>
+                  </a>
+               </div>
+               <div class="col-md-3">
                    <a href="${productManageUrl}" class="btn btn-primary" style="width: 100%; height: 250px;" role="button">
                      <h1><span class="glyphicon glyphicon-list-alt" style="font-size: 80px; margin-top: 5%;"></span> <br/>재고관리</h1>
                   </a>
                </div>
-               <div class="col-md-4">
+               <div class="col-md-3">
                    <a href="${statisticsForProductUrl}" class="btn btn-danger" style="width: 100%; height: 250px;" role="button">
                      <h1><span class="glyphicon glyphicon-signal" style="font-size: 80px; margin-top: 5%;"></span> <br/>매출통계</h1>
                    </a>
                </div>
-               <div class="col-md-4">
+               <div class="col-md-3">
                    <a href="${statisticsForStockUrl}" class="btn btn-info" style="width: 100%; height: 250px;" role="button">
                      <h1><span class="glyphicon glyphicon-eye-open" style="font-size: 80px; margin-top: 5%;"></span> <br/>재고현황</h1>
                     </a>

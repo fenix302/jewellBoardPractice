@@ -73,7 +73,7 @@
 			<div class="form-group">
 				<label for="boardWriter" class="control-label col-md-1"><b>작성자</b></label>
 				<div class="col-md-11">
-					<input class="form-control" type="text" name="writer" id="writer" required="required" maxlength="50"/>
+					<input class="form-control" type="text" name="writer" id="writer" required="required" maxlength="50" disabled="disabled" value="관리자"/>
 				</div>
 			</div>
 
@@ -85,7 +85,7 @@
 			</div>
 		<div class="form-group">
 			<div class="col-md-offset-1 col-md-2">
-				<button type="button" class="btn btn-default" onclick="fn_back()">취소</button>
+				<button type="button" class="btn btn-danger" onclick="fn_back()">취소</button>
 			</div>
 			<div class="col-md-offset-7 col-md-1">
 				<button class="btn btn-primary" type="button" name="btnSubmit" id="btnSubmit" onclick="fn_save()">등록하기</button>

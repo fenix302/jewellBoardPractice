@@ -16,9 +16,9 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDAO.retrieveBoardList(boardParam);
 	}
 	
-	public List<Map<String, String>> getListWithPaging(Map<String, String> boardParam) {
-		return noticeDAO.getListWithPaging(boardParam);
-	}
+//	public List<Map<String, String>> getListWithPaging(Map<String, String> boardParam) {
+//		return noticeDAO.getListWithPaging(boardParam);
+//	}
 
 	public Map<String, String> retrieveBoard(Map<String, String> boardParam){
 		return noticeDAO.retrieveBoard(boardParam);

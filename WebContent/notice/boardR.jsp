@@ -102,10 +102,10 @@ li{
 					<div class="form-group">
 						<label>Writer</label> <input class="form-control" name="writer" value='<c:out value="${dsBoard.WRITER}" />' readonly="readonly">
 					</div>
-					
-					<button data-oper='modify' class="btn btn-default" onclick="location.href='/notice/boardRegisterU.jsp'">Modify</button>	
-					<button data-oper='list' class="btn btn-info" onclick="location.href='/notice/boardListR.jsp'">List</button>
-					
+						<c:if test="${sessionScope.id != null && sessionScope.grade == 'A'}">
+							<button data-oper='modify' class="btn btn-success" onclick="location.href='/notice/boardRegisterU.jsp'">Modify</button>	
+						</c:if>
+							<button data-oper='list' class="btn btn-info" onclick="location.href='/notice/boardListR.jsp'">List</button>
 					<form id="operForm" action="/notice/boardRegisterU" method="get">
 						<input type="hidden" name="bno" value='<c:out value="${dsBoard.BNO}"/>'>
 <%-- 						<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> --%>

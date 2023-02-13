@@ -48,8 +48,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						Board List Page
-						<button id="regBtn" type="button" class="btn btn-xs pull-right">Register
-							New Board</button>
+						<c:if test="${sessionScope.id != null && sessionScope.grade == 'A'}">
+							<button id="regBtn" type="button" class="btn btn-xs btn-danger pull-right">Register New Board</button>
+						</c:if>
 					</div>
 					<!-- /.panel-heading -->
 					<div class="panel-body">
@@ -80,7 +81,7 @@
 		
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="searchForm" action="/notice/boardListR" method="get">
+								<form id="searchForm" action="/work/notice/retrieveBoardList.do" method="get">
 		<!-- 						select 태그의 내부는 삼항 연산자를 이용해서 해당 조건으로 검색되었다면  			-->
 		<!-- 						'selected'라는 문자열을 출력하게 해서 화면에서 선택된 항목으로 보이도록 처리합니다.  	-->
 									<select name="type">
@@ -95,7 +96,7 @@
 									<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"/>'/>
 									<input type="hidden" name="pageNum" value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
 									<input type="hidden" name="amount" value='<c:out value="${pageMaker.cri.amount}"/>'/>
-									<button class="btn btn-default">Search</button>
+									<button class="btn btn-success">Search</button>
 								</form>					
 							</div>
 						</div>
@@ -213,7 +214,7 @@
 							}
 							// 브라우저에서 검색 버튼을 클릭하면 form 태그의 전송은 막고,
 							// 페이지 번호는 1이 되도록 처리합니다.
-							searchForm.find("input[name='pageNum']").val("1");
+// 							searchForm.find("input[name='pageNum']").val("1");
 							e.preventDefault();
 							
 							searchForm.submit();

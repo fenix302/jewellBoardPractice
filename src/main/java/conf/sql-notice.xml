@@ -76,7 +76,7 @@
 				SEQ_NOTICE.NEXTVAL
 				, #{title}
 				, #{content}
-				, #{writer}
+				, '관리자'
 			)
 		]]>
 <!-- 		insert into tb_jw_notice (bno, title, content, writer) -->
@@ -128,11 +128,11 @@
 	
 	
 	
-	<select id="getListWithPaging" parameterType="map" resultType="map">
+	<select id="getListWithPaging" resultType="notice">
 		<![CDATA[
 		
 		SELECT
-		    bno, title, content, writer, regdate
+		    BNO, TITLE, CONTENT, WRITER, REGDATE
 	    from(
 		    SELECT /*+INDEX_DESC(tb_jw_notice pk_notice) */
 		        ROWNUM rn, bno, title, content, writer, regdate
@@ -174,11 +174,13 @@
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-		select count(*) from tb_jw_notice where 
+		select count(*) from tb_jw_notice 
 		
-		<include refid="criteria"></include>
+<!-- 		where  -->
 		
-		bno > 0
+<!-- 		<include refid="criteria"></include> -->
+		
+<!-- 		bno > 0 -->
 	</select>
 	
 	
