@@ -103,16 +103,16 @@
 		
 		
 		<!-- 			tables.html 소스에서 가져오고, 컨트롤 + 쉬프트 + F 로 정렬 처리		 -->
-						<div class="pull-right">
+						<div class="Page pull-right">
 							<ul class="pagination">
 								<c:if test="${pageMaker.prev}">
-									<li class="paginate_button previous"><a href="${pageMaker.startPage-1}">Prev</a></li>
+									<li class="page-item previous"><a href="${pageMaker.startPage-1}">Prev</a></li>
 								</c:if>
 								<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-									<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""} "><a href="${num}">${num}</a></li>
+									<li class="page-item ${pageMaker.cri.pageNum == num ? "active":""} "><a href="${num}">${num}</a></li>
 								</c:forEach>
 								<c:if test="${pageMaker.next}">
-									<li class="paginate_button next"><a href="${pageMaker.endPage +1}">Next</a></li>
+									<li class="page-item next"><a href="${pageMaker.endPage +1}">Next</a></li>
 								</c:if>
 							</ul>
 						</div>
@@ -151,7 +151,7 @@
 		</div>
 		<!-- /.row -->
 </div>
-		<form id="actionForm" action="/notice/boardListR" method="get">
+		<form id="actionForm" action="/work/notice/retrieveBoardList.do" method="get">
 			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 			<input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>
@@ -184,7 +184,7 @@
 						});
 		
 						var actionForm = $("#actionForm");
-						$(".paginate_button a").on("click", function (e) {
+						$(".page-item a").on("click", function (e) {
 							e.preventDefault();
 							console.log('click');
 							actionForm.find("input[name='pageNum']").val($(this).attr("href"));
@@ -214,7 +214,7 @@
 							}
 							// 브라우저에서 검색 버튼을 클릭하면 form 태그의 전송은 막고,
 							// 페이지 번호는 1이 되도록 처리합니다.
-// 							searchForm.find("input[name='pageNum']").val("1");
+							searchForm.find("input[name='pageNum']").val("1");
 							e.preventDefault();
 							
 							searchForm.submit();

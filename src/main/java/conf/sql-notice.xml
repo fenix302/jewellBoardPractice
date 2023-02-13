@@ -13,22 +13,23 @@
 	<sql id="criteria">  <!-- MyBatis는 sql태그를 이용해서 SQL의 일부를 별도로 보관하고, 필요한 경우에 include 시키는 형식으로 사용할 수 있다.-->	
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 <!-- 				String[] getTypeArr 에서 나온 typeArr 쓰는것임 -->
-			<foreach item="type" collection="typeArr">
-<!-- trim 태그 안에서 먼저 prefix 속성이 'OR' 텍스트를 추가해 줍니다 -->
-				<trim prefix="OR">
-					<choose>
-						<when test="type == 'T'.toString()">
-							title like '%'||#{keyword}||'%'
-						</when>
-						<when test="type == 'C'.toString()">
-							content like '%'||#{keyword}||'%'
-						</when>
-						<when test="type == 'W'.toString()">
-							writer like '%'||#{keyword}||'%'
-						</when>
-					</choose>
-				</trim>
-			</foreach>
+			<if test="type != null and keyword != null">
+				<foreach item="type" collection="typeArr">
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 'T'.toString()">
+								title like '%'||#{keyword}||'%'
+							</when>
+							<when test="type == 'C'.toString()">
+								content like '%'||#{keyword}||'%'
+							</when>
+							<when test="type == 'W'.toString()">
+								writer like '%'||#{keyword}||'%'
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</if>
 		</trim>		    
 	</sql>
 
@@ -139,17 +140,8 @@
 		    FROM tb_jw_notice
 		    WHERE 
 		]]>	
-<!-- 		스프링노트 MyBatis 동적쿼리 문법 보기 	
-			1. trim 태그 안에서 prefix 속성 : "(" 추가
-			2. prefixOverrides 속성이 'OR' 텍스트 찾고 삭제
-			3. suffix 속성 : 맨뒤에 ") AND" 추가 -->
-<!-- 여기서는 foreach 태그 안쪽 trim 태그에서 먼저 prefix 속성이 'OR' 텍스트를 추가하여
-     'OR' 연산으로 쿼리문을 처리하다가, 두가지의 텍스트 조합 검색 조건이 나타나면,
-     'AND' 연산을 수행하여 두가지의 텍스트 조합 조건을 검색 처리 합니다.-->
 			<trim prefix="(" suffix=") AND " prefixOverrides="OR">
-<!-- 					String[] getTypeArr 에서 나온 typeArr 쓰는것임 -->
 				<foreach item="type" collection="typeArr">
-<!-- trim 태그 안에서 먼저 prefix 속성이 'OR' 텍스트를 추가해 줍니다 -->
 					<trim prefix="OR">
 						<choose>
 							<when test="type == 'T'.toString()">
@@ -168,19 +160,21 @@
 		<![CDATA[
 			ROWNUM <= #{pageNum} * #{amount}
 			)
-		where rn > (#{pageNum} -1) * #{amount}
+		where RN > (#{pageNum} -1) * #{amount}
 		]]>	
 		    
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-		select count(*) from tb_jw_notice 
-		
-<!-- 		where  -->
-		
-<!-- 		<include refid="criteria"></include> -->
-		
-<!-- 		bno > 0 -->
+		<![CDATA[
+			select count(*) from tb_jw_notice 
+			
+			where 
+		]]>
+		<include refid="criteria"></include>
+		<![CDATA[
+			bno > 0
+		]]>
 	</select>
 	
 	

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -90,13 +91,20 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value="/work/notice/retrieveBoardList.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView retrieveBoardList(HttpServletRequest request){
+	public ModelAndView retrieveBoardList(HttpServletRequest request, Model model, Criteria cri){
 		ModelAndView mv = new ModelAndView();
 		
+		model.addAttribute("dsBoardList", noticeService.getListWithPaging(cri));
 		
-		Map<String, String> boardParam = new HashMap<String, String>();
+		int total = noticeService.getTotalCount();
+		
+		PageDTO pageMaker = new PageDTO(cri, total);
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+//		Map<String, String> boardParam = new HashMap<String, String>();
 
-		List<Map<String, String>> dsBoardList = noticeService.retrieveBoardList(boardParam);
+		List<Map<String, String>> dsBoardList = noticeService.retrieveBoardList(cri);
 
 		mv.addObject("dsBoardList", dsBoardList);
 		mv.setViewName("/notice/boardListR");

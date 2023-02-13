@@ -5,9 +5,9 @@ import java.util.Map;
 
 
 public interface NoticeService {
-	public List<Map<String, String>> retrieveBoardList(Map<String, String> boardParam);
+	public List<Map<String, String>> retrieveBoardList(Criteria cri);
 
-//	public List<Map<String, String>> getListWithPaging(Map<String, String> boardParam);
+	public List<Map<String, String>> getListWithPaging(Criteria cri);
 	
 	public Map<String, String> retrieveBoard(Map<String, String> boardParam);
 
@@ -21,4 +21,6 @@ public interface NoticeService {
 
 	public void deleteBoard(Map<String, String> boardParam);
 	public void deleteBoard2(Map<String, String> boardParam);
+	
+	public int getTotalCount();
 }
