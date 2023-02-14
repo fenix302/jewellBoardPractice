@@ -165,7 +165,7 @@ public class NoticeController {
 //			model.addAttribute("amount", cri.getAmount());
 //			model.addAttribute("type", cri.getType());
 //			model.addAttribute("keyword", cri.getKeyword());
-			mv.setViewName("redirect:/work/notice/retrieveBoard.do");
+			mv.setViewName("redirect:/work/notice/retrieveBoard.do?bno=" + boardNo);
 		}
 		return mv;
 	}
